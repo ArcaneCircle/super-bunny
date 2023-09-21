@@ -1,6 +1,14 @@
-## JS13K games competition 2019, theme: BACK
+# Super Bunny Strikes Back: Webxdc Port
 
-# Super Bunny Strikes Back!
+This is a webxdc port of the game "Super Bunny Strikes Back".
+
+To play, go to the releases page
+and drag the .xdc asset to your webxdc-enabled messenger as Delta Chat or Cheogram.
+
+Following is the original README:
+
+
+## Super Bunny Strikes Back!
 
 Take Kitty on a quest to find Bunny lost! Journey through dark forests and snowy meadows, pass through a great waterfall to finally reach the steppes and confront the Lion King! Clear the game to unlock Super Bunny and then hop with him at increased difficulty!
 
