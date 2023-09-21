@@ -76,20 +76,6 @@
 	<script>
 		"use strict";
 
-		// register SW
-		if("serviceWorker" in navigator) {
-			navigator.serviceWorker
-			.register("serviceworker.js")
-			.then(function() {
-				console.log("[Event] Service Worker registered successfully");
-			})
-			.catch(function() {
-				console.log("[Warning] Service worker registration failed")
-			});
-		} else {
-			console.log("[Warning] ServiceWorker not found in navigator");
-		}
-
 		// requestAnimationFrame polyfill
 		/*if (!window.requestAnimationFrame) {
 			window.requestAnimationFrame = ( function() {
