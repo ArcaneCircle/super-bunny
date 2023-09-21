@@ -50,6 +50,17 @@
 	<script>
 		"use strict";
 
+		var selfHighscore = 0;
+		var allHighscore = 0;
+		webxdc.setUpdateListener((update) => {
+			if (update.payload.addr == webxdc.selfAddr && update.payload.score > selfHighscore) {
+				selfHighscore = update.payload.score;
+			}
+			if (update.payload.score > allHighscore) {
+				allHighscore = update.payload.score;
+			}
+		}, 0);
+
 		// requestAnimationFrame polyfill
 		/*if (!window.requestAnimationFrame) {
 			window.requestAnimationFrame = ( function() {
@@ -1139,7 +1150,20 @@
 			}
 			drawUI(360,350,280,48,(score<1000?"  ":score<10000?" ":"")+"     Score: "+score,32);
 
-			// TODO: send webxdc update here
+			if (score > selfHighscore) {
+				if (score > allHighscore) {
+					allHighscore = score;
+				}
+				const msg = "Super Bunny " + webxdc.selfName + " scored " + score;
+				webxdc.sendUpdate(
+					{
+						payload: { "addr": webxdc.selfAddr, "score": score },
+						info: msg,
+						summary: "Hi: " + allHighscore
+					},
+					msg
+				);
+			}
 		}
 
 		function resetBunnyFunction(){
