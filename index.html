@@ -372,7 +372,7 @@
 		var win;
 		var fff;
 
-		var monet; // monetization : subscribed
+		var monet; // monetization : if subscribed, user can change levels. we do not want that in webxdc
 		var master; // game has been cleared, 1:super bunny, 2:super kitten
 		
 		var mode = 1;
@@ -444,17 +444,6 @@
 
 			document.addEventListener("fullscreenchange", fullscreenCheck);
 
-			if(document.monetization){
-				console.log("[Event] Web Monetization",document.monetization.state);
-				if(document.monetization.state=="started") monet = 1;
-				else document.monetization.addEventListener("monetizationstart",
-					function(){
-						monet = 1;
-						if(lives<0) level = -1;
-					}
-				);
-			} else console.log("[Warning] Web Monetization not found");
-
 			// generate player sprites (bunny/kitty colors depending on mode)
 			bunnySprites = [];
 			for(i = 0; i < 22; i++){
@@ -479,28 +468,10 @@
 			return c;
 		}
 
-		function tweet(){
-			createWindow(width/2, height/2, "https://twitter.com/intent/tweet?text="+encodeURIComponent("I achieved a"+(master==2?" Super":master?" Master":"")+" Hi-Score of "+hiscore+" points in Super Bunny Strikes Back! Can you beat it? Game by @FoumartGames for @js13kGames #js13k "+window.location.href), "html", "resizable=yes,scrollbars=no");
-		}
-		//window open
-		function createWindow(...r){
-			var a,j,w,h,i=0
-			a = []
-			for(;i < r.length; i++) a.push(r[i])
-			w = a.shift()
-			h = a.shift()
-			a[2] = ('width=' + w + ',height=' + h + ',' +a[2])
-			try{
-				j = window.open.apply(this, a)
-				j.addEventListener("load", j.focus, false)
-			} catch(e) {
-				console.log("[Warning] Could not open a new window for Tweet")
-			}
-		}
-
 		// draw Title Screen
 		function createMenu(){
-			menu.innerHTML="<div id=logo class=d onclick=startNewGame()></div><div id=hero><div style=top:154px>"+(hiscore?"<a href=javascript:tweet()>Tweet</a> your"+(master==2?" Super":master?" Master":"")+" Hi-Score: "+hiscore+", won in "+(besttime/3600|0)+"."+(besttime/60%60|0)+" mins. ":"")+(monet?"Coil Subscription detected":"Subscribe in <a href=https://coil.com/ target=_blank>Coil.com</a> to unlock "+(master?"cheats":"Super Bunny"))+"!<br/>&nbsp;Developed by Noncho Savov, <a href=https://www.foumartgames.com/ target=_blank>FoumartGames</a> 2019. Submission in JS13K games. Inspired by Super Bunny by Vic Leone, DataMost Inc. 1983</div></div>";
+			var hiscoreMsg = "Hiscore: " + allHighscore;
+			menu.innerHTML="<div id=logo class=d onclick=startNewGame()></div><div id=hero><div style=top:154px>"+(hiscoreMsg)+"<br/>&nbsp;Developed by Noncho Savov, FoumartGames 2019. Submission in JS13K games. Inspired by Super Bunny by Vic Leone, DataMost Inc. 1983</div></div>";
 			var titleArr = [
 				[[4,5,,-2,,3,,3]],[[4,5,-.5,-1,,3,,3]],
 				[[12,4,,,3,,3,1],[12,4,,6.5,1,3,1,3],[14,4,-2,14,3,1,3],[3.5,3.5,.5,3.5,1,1,1,1,1,,1],[4,4.5,7.5,10,1,1,1,1,1,,1]],
