@@ -1,10 +1,12 @@
 # Super Bunny Strikes Back: Webxdc Port
 
-This is a webxdc port of the game "Super Bunny Strikes Back".
+This is a Webxdc port of the [Super Bunny Strikes Back](https://github.com/foumart/JS.13kGames.2019_SuperBunny) game.
+The game has no music originally and was
+enhanced by the incredible sound engine [ZzFXM](https://github.com/keithclark/ZzFXM)
+playing "Sanxion" by Rob Hubbard 🙏
 
-To play, go to the releases page
+To play the game, go to the releases page
 and drag the .xdc asset to your webxdc-enabled messenger as Delta Chat or Cheogram.
-
 Following is the original README:
 
 
