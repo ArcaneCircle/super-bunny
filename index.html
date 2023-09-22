@@ -55,6 +55,7 @@
 			return s.substring(s.length - size);
 		}
 
+		const selfNameShort = webxdc.selfName.split("@")[0].split(" ")[0];
 		var selfHighscore = 0;
 		var allHighscore = 0;
 		var allHighscoreName = '';
@@ -624,11 +625,19 @@
 				}
 			}
 
+			function ucString(str, maxLen) {
+				let ret = str
+				if (ret.length > maxLen) {
+					ret = ret.substring(0, maxLen).trim();
+				}
+				return ret.toUpperCase();
+			}
+
 			function drawTitleTxt(){
 				addShadow(txtCtx, 1, 1, "#935")
 				txtCtx.fillStyle = "#fab";
 				txtCtx.font = "bold 16px Lucida Console";
-				txtCtx.fillText("STRIKES BACK", 90, 70);
+				txtCtx.fillText(ucString(selfNameShort, 10) + " STRIKES BACK", 35, 70);
 				addShadow(txtCtx)
 			}
 		}
@@ -1158,15 +1167,15 @@
 			if (score > selfHighscore) {
 				if (score > allHighscore) {
 					allHighscore = score;
-					allHighscoreName = webxdc.selfName;
+					allHighscoreName = selfNameShort;
 				}
 				const minutes = (besttime/3600|0)+":"+addLeadingZeros(besttime/60%60|0, 2);
-				const msg = "Super Bunny " + webxdc.selfName + " scored " + score + " in " + minutes;
+				const msg = "Super Bunny " + selfNameShort + " scored " + score + " in " + minutes;
 				webxdc.sendUpdate(
 					{
-						payload: { "addr": webxdc.selfAddr, "name": webxdc.selfName, "score": score },
+						payload: { "addr": webxdc.selfAddr, "name": selfNameShort, "score": score },
 						info: msg,
-						summary: "Hi: " + allHighscore
+						summary: allHighscore + " scored by " + allHighscoreName
 					},
 					msg
 				);
