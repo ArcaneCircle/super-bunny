@@ -37,7 +37,6 @@
 		<div class=f onclick=resetGame() style=left:920px;width:34px;></div>
 		<div class=f onclick=toggleFullscreen() style=left:835px></div>
 		<div class=f onclick=mute() style=top:50px;left:835px;width:120px;></div>
-		<div class=f onclick=pause() style=top:92px></div>
 
 		<div class=f onclick=nextStage() style=left:3px;width:36px;></div>
 		<div class=f onclick=prevStage() style=left:3px;width:36px;top:40px;></div>
@@ -1246,10 +1245,6 @@
 			
 			drawUI(834,50,120,32," Sound "+(FX.volume?" ON":"OFF"),19);
 			drawUI(845,74,10,4);
-			if(!end){
-				drawUI(874,94,80,32," Pause");
-				drawUI(885,119,10,4);
-			}
 		}
 
 		function drawUI(x,y,w,h,t,s,f){
@@ -1369,9 +1364,6 @@
 			}
 			if(e == 37 || e == 65) {
 				leftClick();
-			}
-			if(e == 80 || e == 27) {
-				pause();
 			}
 			if(e == 83) {
 				mute();
