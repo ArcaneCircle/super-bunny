@@ -34,8 +34,7 @@
 	<div id=game class=z>
 		<canvas class=c id=gridCanvas width=960 height=540></canvas>
 		<canvas class="c e" id=bunnyCanvas width=24 height=25></canvas>
-		<div class=f onclick=resetGame() style=left:920px;width:34px;></div>
-		<div class=f onclick=toggleFullscreen() style=left:835px></div>
+		<div class=f onclick=toggleFullscreen() style=left:875px></div>
 		<div class=f onclick=mute() style=top:50px;left:835px;width:120px;></div>
 
 		<div class=f onclick=nextStage() style=left:3px;width:36px;></div>
@@ -1232,11 +1231,9 @@
 			drawUI(monet?40:3,8,88,26," S T A G E", 15);
 			drawUI(monet?40:3,28,88,32,"     "+(level>9?"":" ")+level, 21);
 
-			drawUI(834,8,80,32," Full");
-			drawUI(886,15,18,15,fff?"▀":"",12);
-			drawUI(845,32,10,4);
-
-			drawUI(918,8,36,32," ✕");
+			drawUI(874,8,80,32," Full");
+			drawUI(926,15,18,15,fff?"▀":"",12);
+			drawUI(885,32,10,4);
 
 			if(monet){
 				drawUI(3,8,34,29,level<13?" ►":" ▷",18);
@@ -1375,9 +1372,6 @@
 				jump = 5*jumpfps + 1;
 				dir = 1;
 				posX = L+1;
-			}
-			if(e == 82) {
-				if(level) resetGame();
 			}
 		}
 
