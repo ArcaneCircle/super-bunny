@@ -164,7 +164,7 @@
 			if (startWhenBufferReady) {
 				startSong()
 			}
-		}, 300);
+		}, 360);
 		function startSong() {
 			if (!songStarted) {
 				if (songNode) {
@@ -636,8 +636,10 @@
 			function drawTitleTxt(){
 				addShadow(txtCtx, 1, 1, "#935")
 				txtCtx.fillStyle = "#fab";
-				txtCtx.font = "bold 16px Lucida Console";
-				txtCtx.fillText(ucString(selfNameShort, 10) + " STRIKES BACK", 35, 70);
+				txtCtx.font = "bold 16px Courier New";
+				var msg = ucString(selfNameShort, 10) + " STRIKES BACK";
+				msg = ' '.repeat(parseInt((24-msg.length)/2)) + msg;
+				txtCtx.fillText(msg, 10, 70);
 				addShadow(txtCtx)
 			}
 		}
