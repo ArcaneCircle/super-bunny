@@ -50,6 +50,11 @@
 	<script>
 		"use strict";
 
+		function addLeadingZeros(num, size) {
+			const s = "000000000" + num;
+			return s.substring(s.length - size);
+		}
+
 		var selfHighscore = 0;
 		var allHighscore = 0;
 		webxdc.setUpdateListener((update) => {
@@ -1125,10 +1130,11 @@
 				if (score > allHighscore) {
 					allHighscore = score;
 				}
-				const msg = "Super Bunny " + webxdc.selfName + " scored " + score;
+				const minutes = (besttime/3600|0)+":"+addLeadingZeros(besttime/60%60|0, 2);
+				const msg = "Super Bunny " + webxdc.selfName + " scored " + score + " in " + minutes;
 				webxdc.sendUpdate(
 					{
-						payload: { "addr": webxdc.selfAddr, "score": score },
+						payload: { "addr": webxdc.selfAddr, "name": webxdc.selfName, "score": score },
 						info: msg,
 						summary: "Hi: " + allHighscore
 					},
