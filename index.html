@@ -57,12 +57,14 @@
 
 		var selfHighscore = 0;
 		var allHighscore = 0;
+		var allHighscoreName = '';
 		webxdc.setUpdateListener((update) => {
 			if (update.payload.addr == webxdc.selfAddr && update.payload.score > selfHighscore) {
 				selfHighscore = update.payload.score;
 			}
 			if (update.payload.score > allHighscore) {
 				allHighscore = update.payload.score;
+				allHighscoreName = update.payload.name;
 			}
 		}, 0);
 
@@ -475,7 +477,10 @@
 
 		// draw Title Screen
 		function createMenu(){
-			var hiscoreMsg = "Hiscore: " + allHighscore;
+			var encodedName = allHighscoreName.replace(/[\u00A0-\u9999<>\&]/g, function(i) {
+			   return '&#'+i.charCodeAt(0)+';';
+			});
+			var hiscoreMsg = (allHighscore>0? ("Hiscore " + allHighscore + " held by " + encodedName) : "");
 			menu.innerHTML="<div id=logo class=d onclick=startNewGame()></div><div id=hero><div style=top:154px>"+(hiscoreMsg)+"<br/>&nbsp;Developed by Noncho Savov, FoumartGames 2019. Submission in JS13K games. Inspired by Super Bunny by Vic Leone, DataMost Inc. 1983</div></div>";
 			var titleArr = [
 				[[4,5,,-2,,3,,3]],[[4,5,-.5,-1,,3,,3]],
@@ -1129,6 +1134,7 @@
 			if (score > selfHighscore) {
 				if (score > allHighscore) {
 					allHighscore = score;
+					allHighscoreName = webxdc.selfName;
 				}
 				const minutes = (besttime/3600|0)+":"+addLeadingZeros(besttime/60%60|0, 2);
 				const msg = "Super Bunny " + webxdc.selfName + " scored " + score + " in " + minutes;
