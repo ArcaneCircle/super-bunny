@@ -1268,9 +1268,11 @@
 			drawUI(monet?40:3,8,88,26," S T A G E", 15);
 			drawUI(monet?40:3,28,88,32,"     "+(level>9?"":" ")+level, 21);
 
-			drawUI(874,8,80,32," Full");
-			drawUI(926,15,18,15,fff?"▀":"",12);
-			drawUI(885,32,10,4);
+			if (document.fullscreenEnabled) {
+				drawUI(874,8,80,32," Full");
+				drawUI(926,15,18,15,fff?"▀":"",12);
+				drawUI(885,32,10,4);
+			}
 
 			if(monet){
 				drawUI(3,8,34,29,level<13?" ►":" ▷",18);
