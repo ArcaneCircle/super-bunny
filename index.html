@@ -34,8 +34,8 @@
 	<div id=game class=z>
 		<canvas class=c id=gridCanvas width=960 height=540></canvas>
 		<canvas class="c e" id=bunnyCanvas width=24 height=25></canvas>
-		<div class=f onclick=toggleFullscreen() style=left:875px></div>
-		<div class=f onclick=mute() style=top:50px;left:835px;width:120px;></div>
+		<div class=f onclick=toggleFullscreen() style=top:50px;left:875px></div>
+		<div class=f onclick=mute() style=left:835px;width:120px;></div>
 
 		<div class=f onclick=nextStage() style=left:3px;width:36px;></div>
 		<div class=f onclick=prevStage() style=left:3px;width:36px;top:40px;></div>
@@ -1269,9 +1269,9 @@
 			drawUI(monet?40:3,28,88,32,"     "+(level>9?"":" ")+level, 21);
 
 			if (document.fullscreenEnabled) {
-				drawUI(874,8,80,32," Full");
-				drawUI(926,15,18,15,fff?"▀":"",12);
-				drawUI(885,32,10,4);
+				drawUI(874,50,80,32," Full");
+				drawUI(926,57,18,15,fff?"▀":"",12);
+				drawUI(885,74,10,4);
 			}
 
 			if(monet){
@@ -1279,8 +1279,8 @@
 				drawUI(3,40,34,28,level>1?" ◄":" ◁",16);
 			}
 			
-			drawUI(834,50,120,32," Sound "+(FX.volume?" ON":"OFF"),19);
-			drawUI(845,74,10,4);
+			drawUI(834,8,120,32," Sound "+(FX.volume?" ON":"OFF"),19);
+			drawUI(845,32,10,4);
 		}
 
 		function drawUI(x,y,w,h,t,s,f){
