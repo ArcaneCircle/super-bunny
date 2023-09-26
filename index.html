@@ -1437,14 +1437,13 @@
 		// fullscreen handler
 		// -----------------
 		function toggleFullscreen(e){
-			var d = document.documentElement;//document.msFullscreenElement
-			if (!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement))
-				(d.requestFullscreen || d.mozRequestFullScreen || d.webkitRequestFullScreen ||
-					d.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT)/*|| d.msRequestFullscreen*/).call(d);
-			else if(document.exitFullscreen) document.exitFullscreen();
-			else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
-			else if(document.webkitCancelFullScreen) document.webkitCancelFullScreen();
-			//else if(document.msExitFullscreen) document.msExitFullscreen();
+			if (document.fullscreenEnabled) {
+				if (!document.fullscreenElement) {
+					document.documentElement.requestFullscreen();
+				} else {
+					document.exitFullscreen();
+				}
+			}
 		}
 		function fullscreenCheck(e){
 			console.log(e);
