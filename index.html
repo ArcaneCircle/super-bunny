@@ -172,8 +172,6 @@
 			}
 		}
 
-		loadSong();
-
 		var Tile = (function(){
 			return {
 				getTile:function(x, y, W, H, w, h, scale, speed, connecting, connected){
@@ -611,9 +609,10 @@
 						hero.lastChild.previousSibling.style.visibility = "visible";
 						txtCtx.clearRect(0, 0, txt.width, txt.height);
 						drawTitleTxt();
+						loadSong();
 					} else if(m>85){
 						txtCtx.globalAlpha = .05;
-						txtCtx.fillText("GET READY", 124, 125);
+						txtCtx.fillText(songLoaded? "GET READY":"LOADING...", 124, 125);
 						txtCtx.globalAlpha = 1;
 					}
 					requestAnimationFrame(animateMenu);
