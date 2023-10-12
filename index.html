@@ -159,6 +159,7 @@
 		var songStarted = false;
 		function loadSong() {
 			if (!songLoaded) {
+				songLoaded = true;
 				const songBuffer = zzfxM(...songData); // Generate the sample data
 				songNode = zzfxP(...songBuffer); // prepare song for playing, but do not start
 				songNode.loop = true;
