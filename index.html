@@ -156,25 +156,19 @@
 
 		var songNode = null;
 		var songStarted = false;
-		var startWhenBufferReady = false;
-		setTimeout(function() {
+		function loadSong() {
 			const songBuffer = zzfxM(...songData); // Generate the sample data
 			songNode = zzfxP(...songBuffer); // prepare song for playing, but do not start
 			songNode.loop = true;
-			if (startWhenBufferReady) {
-				startSong()
-			}
-		}, 360);
+		};
 		function startSong() {
 			if (!songStarted) {
-				if (songNode) {
-					songNode.start()
-					songStarted = true;
-				} else {
-					startWhenBufferReady = true;
-				}
+				songNode.start()
+				songStarted = true;
 			}
 		}
+
+		loadSong();
 
 		var Tile = (function(){
 			return {
