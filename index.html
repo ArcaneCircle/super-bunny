@@ -155,11 +155,14 @@
 		})();
 
 		var songNode = null;
+		var songLoaded = false;
 		var songStarted = false;
 		function loadSong() {
-			const songBuffer = zzfxM(...songData); // Generate the sample data
-			songNode = zzfxP(...songBuffer); // prepare song for playing, but do not start
-			songNode.loop = true;
+			if (!songLoaded) {
+				const songBuffer = zzfxM(...songData); // Generate the sample data
+				songNode = zzfxP(...songBuffer); // prepare song for playing, but do not start
+				songNode.loop = true;
+			}
 		};
 		function startSong() {
 			if (!songStarted) {
