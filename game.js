@@ -816,11 +816,11 @@ function drawLevel(){
 
 const fps = 50;
 const interval = 1000/fps;
-var then = performance.now();
+var then = 0;
 
 // main game loop
 function draw(){
-  const now = performance.now()
+  const now = Date.now()
   const delta = now - then;
   if (delta < interval) {
     requestAnimationFrame(draw)
