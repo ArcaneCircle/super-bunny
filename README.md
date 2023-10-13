@@ -8,6 +8,10 @@ playing "Sanxion" by Rob Hubbard 🙏
 To play the game, go to the [releases page](https://codeberg.org/r10s/super-bunny/releases)
 and drop the `super-bunny.xdc` asset to your webxdc-enabled messenger as Delta Chat or Cheogram.
 
+## Build
+
+- make sure, [`jsmin`](https://www.crockford.com/jsmin.html) is installed (eg. via packet manager)
+- run `./create-xdc.sh` and share the created `super-bunny.xdc` to any chat!
 
 
 Following is the original README:
