@@ -814,7 +814,7 @@ function drawLevel(){
   }
 }
 
-const fps = 50;
+const fps = 60;
 const interval = 1000/fps;
 var then = 0;
 
