@@ -820,7 +820,7 @@ var then = 0;
 
 // main game loop
 function draw(){
-  const now = Date.now()
+  const now = (performance && performance.now) ? performance.now() : Date.now();
   const delta = now - then;
   if (delta < interval) {
     requestAnimationFrame(draw)
