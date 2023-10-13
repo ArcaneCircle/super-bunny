@@ -2,8 +2,7 @@
 
 This is a Webxdc port of the [Super Bunny Strikes Back](https://github.com/foumart/JS.13kGames.2019_SuperBunny) game.
 The game has no music originally and was
-enhanced by the incredible sound engine [ZzFXM](https://github.com/keithclark/ZzFXM)
-playing "Sanxion" by Rob Hubbard 🙏
+enhanced by the incredible sound engine [ZzFXM](https://github.com/keithclark/ZzFXM).
 
 ![Logo](./icon.png)
 
