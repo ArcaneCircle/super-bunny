@@ -814,8 +814,20 @@ function drawLevel(){
   }
 }
 
+const fps = 50;
+const interval = 1000/fps;
+var then = performance.now();
+
 // main game loop
 function draw(){
+  const now = performance.now()
+  const delta = now - then;
+  if (delta < interval) {
+    requestAnimationFrame(draw)
+    return;
+  }
+  then = now
+
   if(lives<0) return;
   time ++;
   oldmulti = multi;
