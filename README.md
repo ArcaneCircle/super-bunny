@@ -5,8 +5,13 @@ The game has no music originally and was
 enhanced by the incredible sound engine [ZzFXM](https://github.com/keithclark/ZzFXM)
 playing "Sanxion" by Rob Hubbard 🙏
 
-To play the game, go to the [releases page](https://codeberg.org/r10s/super-bunny/releases)
-and drop the `super-bunny.xdc` asset to your webxdc-enabled messenger as Delta Chat or Cheogram.
+
+## Getting started
+
+- Drop the `super-bunny.xdc` from the [release assets](https://codeberg.org/r10s/super-bunny/releases)
+  to any webxdc-enabled messenger as Delta Chat or Cheogram
+- Or try out an [online demo](https://r10s.codeberg.page/super-bunny/@main/)
+
 
 ## Build
 
