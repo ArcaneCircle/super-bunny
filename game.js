@@ -616,6 +616,7 @@ function drawTitle(titleArr, baseLeft, baseTop, scale, className){
 
 
 function startNewGame(e){
+  if(!songLoaded) return;
   if(!FX.initialized) FX.start();// start soundFX
   setTimeout(startSong, 610)
   menu.style.display = "none";
