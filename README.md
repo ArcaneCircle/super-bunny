@@ -10,9 +10,9 @@ Clear the game to unlock Super Bunny and then hop with him at increased difficul
 
 ## Getting started
 
-- Drop the `super-bunny.xdc` from the [release assets](https://codeberg.org/r10s/super-bunny/releases)
+- Drop the `super-bunny.xdc` from the [release assets](https://github.com/DeltaZen/super-bunny/releases)
   to any webxdc-enabled messenger as Delta Chat or Cheogram
-- Or try out an [online demo](https://r10s.codeberg.page/super-bunny/@main/)
+- Or try out an [online demo](https://deltazen.github.io/super-bunny/)
 
 
 ## Build
