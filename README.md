@@ -1,4 +1,4 @@
-# Super Bunny Strikes Back: Webxdc Port
+# Super Bunny Strikes Back
 
 Take Kitty on a quest to find Bunny lost!
 Journey through dark forests and snowy meadows,
@@ -7,22 +7,54 @@ Clear the game to unlock Super Bunny and then hop with him at increased difficul
 
 ![Logo](./icon.png)
 
-
-## Getting started
-
-- Drop the `super-bunny.xdc` from the [release assets](https://github.com/DeltaZen/super-bunny/releases)
-  to any webxdc-enabled messenger as Delta Chat or Cheogram
-- Or try out an [online demo](https://deltazen.github.io/super-bunny/)
-
-
-## Build
-
-- make sure, [`jsmin`](https://www.crockford.com/jsmin.html) is installed (eg. via packet manager)
-- run `./create-xdc.sh` and share the created `super-bunny.xdc` to any chat!
-
-
----
+## Credits
 
 This is a Webxdc port of the [Super Bunny Strikes Back](https://github.com/foumart/JS.13kGames.2019_SuperBunny) game.
 The game has no music originally and was
 enhanced by the incredible sound engine [ZzFXM](https://github.com/keithclark/ZzFXM).
+
+## Contributing
+
+### Installing Dependencies
+
+After cloning this repo, install dependecies:
+
+```
+pnpm i
+```
+
+### Testing the app in the browser
+
+To test your work in your browser (with hot reloading!) while developing:
+
+```
+pnpm dev-mini
+# Alternatively to test in a more advanced WebXDC emulator:
+pnpm dev
+```
+
+### Building
+
+To package the WebXDC file:
+
+```
+pnpm build
+```
+
+To package the WebXDC with developer tools inside to debug in Delta Chat, set the `NODE_ENV`
+environment variable to "debug":
+
+```
+NODE_ENV=debug pnpm build
+```
+
+The resulting optimized `.xdc` file is saved in `dist-xdc/` folder.
+
+### Releasing
+
+To automatically build and create a new GitHub release with the `.xdc` file:
+
+```
+git tag v1.0.1
+git push origin v1.0.1
+```
