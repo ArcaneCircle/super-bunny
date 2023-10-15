@@ -618,6 +618,7 @@ function drawTitle(titleArr, baseLeft, baseTop, scale, className){
 
 window.startNewGame = (e) => {
   if(!FX.initialized) FX.start();// start soundFX
+  setTimeout(startSong, 610)
   menu.style.display = "none";
   if(e==1) mode = 1;
   else if(e) mode = 0;
@@ -953,7 +954,6 @@ function draw(){
           }
           jump = 1;
         } else {
-          setTimeout(startSong, 610)
           FX.p(1, 50, 10, 40);
           FX.p(1, 90, 8, 35, 160, .05);
           FX.p(0, 90, 20, 30, 320, .06);
