@@ -1305,7 +1305,8 @@ function pause(){
     requestAnimationFrame(draw);
   }
 }
-function mute(){
+
+window.mute = () => {
   if(FX.volume){
     FX.volume=0
     zzfxX.suspend()
@@ -1315,7 +1316,8 @@ function mute(){
     zzfxX.resume()
   }
   drawUserInterface();
-}
+};
+
 function resetGame(){
   if(end && level == 13 && win){
     master = mode+1;
@@ -1331,23 +1333,23 @@ function resetGame(){
   createMenu();
 }
 
-function prevStage(){
+window.prevStage = () => {
   console.log("[Cheat] force previous stage")
   if(level>1 && monet){
     jump = 5*jumpfps + 1;
     dir = 0;
     posX = 0;
   }
-}
+};
 
-function nextStage(){
+window.nextStage = () => {
   console.log("[Cheat] force next stage")
   if(level<13 && monet){
     jump = 5*jumpfps + 1;
     dir = 1;
     posX = L+1;
   }
-}
+};
 
 function keyDownHandler(e) {//console.log(e.keyCode)
   e = e.keyCode
@@ -1396,7 +1398,7 @@ function drawFPS(){
 
 // fullscreen handler
 // -----------------
-function toggleFullscreen(e){
+window.toggleFullscreen = (e) => {
   if (document.fullscreenEnabled) {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -1404,7 +1406,8 @@ function toggleFullscreen(e){
       document.exitFullscreen();
     }
   }
-}
+};
+
 function fullscreenCheck(e){
   console.log(e);
   fff = document.fullscreenElement;

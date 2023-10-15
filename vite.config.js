@@ -1,5 +1,11 @@
-import { webxdcViteConfig } from "webxdc-vite-plugins";
+import {
+  buildXDC,
+  eruda,
+  mockWebxdc,
+  //  legacy, // causes problems with worker
+} from "webxdc-vite-plugins";
 import { defineConfig } from "vite";
 
-// https://vitejs.dev/config/
-export default defineConfig(webxdcViteConfig());
+export default defineConfig({
+  plugins: [buildXDC(), eruda(), mockWebxdc()],
+});
