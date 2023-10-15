@@ -1,20 +1,22 @@
 import SongWorker from "./worker.js?worker";
 
 let songNode = null;
-let songLoaded = false;
 let songStarted = false;
 const worker = new SongWorker();
 worker.onmessage = ({ data }) => {
     songNode = zzfxP(data.right, data.left); // prepare song for playing, but do not start
     songNode.loop = true;
-    songLoaded = true;
     worker.terminate();
 };
 
 function startSong() {
-  if (songLoaded && !songStarted) {
-    songNode.start();
-    songStarted = true;
+  if (!songStarted) {
+    if (!songNode) {
+      setTimeout(startSong, 610);
+    } else {
+      songStarted = true;
+      songNode.start();
+    }
   }
 }
 
@@ -616,7 +618,6 @@ function drawTitle(titleArr, baseLeft, baseTop, scale, className){
 
 window.startNewGame = (e) => {
   if(!FX.initialized) FX.start();// start soundFX
-  startSong();
   menu.style.display = "none";
   if(e==1) mode = 1;
   else if(e) mode = 0;
@@ -952,6 +953,7 @@ function draw(){
           }
           jump = 1;
         } else {
+          setTimeout(startSong, 610)
           FX.p(1, 50, 10, 40);
           FX.p(1, 90, 8, 35, 160, .05);
           FX.p(0, 90, 20, 30, 320, .06);
@@ -1265,7 +1267,6 @@ function gameClick(e){
   else if(end && level == 13) resetGame()
 }
 function leftClick(){
-  startSong();
   if(jump || yum>1 || boom>1 || p || end || !running) return;
   if(dir) {
     FX.c(2,9);
@@ -1281,7 +1282,6 @@ function leftClick(){
   }
 }
 function rightClick(){
-  startSong();
   if(jump || yum>1 || boom>1 || p || (level==13&&posX==5) || end || !running) return;
   if(!dir) {
     FX.c(2,9);
