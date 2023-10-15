@@ -1408,7 +1408,7 @@ function fullscreenCheck(e){
 // for debugging
 window.prevStage = () => {
   console.log("[Cheat] force previous stage")
-  if(level>1 && monet){
+  if(level>1){
     jump = 5*jumpfps + 1;
     dir = 0;
     posX = 0;
@@ -1418,7 +1418,7 @@ window.prevStage = () => {
 // for debugging
 window.nextStage = () => {
   console.log("[Cheat] force next stage")
-  if(level<13 && monet){
+  if(level<13){
     jump = 5*jumpfps + 1;
     dir = 1;
     posX = L+1;
