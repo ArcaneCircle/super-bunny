@@ -1,4 +1,24 @@
-"use strict";
+import SongWorker from "./worker.js?worker";
+
+let songNode = null;
+let songStarted = false;
+const worker = new SongWorker();
+worker.onmessage = ({ data }) => {
+    songNode = zzfxP(data.right, data.left); // prepare song for playing, but do not start
+    songNode.loop = true;
+    worker.terminate();
+};
+
+function startSong() {
+  if (!songStarted) {
+    if (!songNode) {
+      setTimeout(startSong, 610);
+    } else {
+      songStarted = true;
+      songNode.start();
+    }
+  }
+}
 
 function addLeadingZeros(num, size) {
   const s = "000000000" + num;
@@ -102,24 +122,6 @@ var FX = (function(){
 
   return d;
 })();
-
-var songNode = null;
-var songLoaded = false;
-var songStarted = false;
-function loadSong() {
-  if (!songLoaded) {
-    songLoaded = true;
-    const songBuffer = zzfxM(...songData); // Generate the sample data
-    songNode = zzfxP(...songBuffer); // prepare song for playing, but do not start
-    songNode.loop = true;
-  }
-};
-function startSong() {
-  if (!songStarted) {
-    songNode.start()
-    songStarted = true;
-  }
-}
 
 var Tile = (function(){
   return {
@@ -558,10 +560,9 @@ function createMenu(){
         hero.lastChild.previousSibling.style.visibility = "visible";
         txtCtx.clearRect(0, 0, txt.width, txt.height);
         drawTitleTxt();
-        loadSong();
       } else if(m>85){
         txtCtx.globalAlpha = .05;
-        txtCtx.fillText(songLoaded? "GET READY":"LOADING...", 124, 125);
+        txtCtx.fillText("PLAY", 124, 125);
         txtCtx.globalAlpha = 1;
       }
       requestAnimationFrame(animateMenu);
@@ -615,8 +616,7 @@ function drawTitle(titleArr, baseLeft, baseTop, scale, className){
 }
 
 
-function startNewGame(e){
-  if(!songLoaded) return;
+window.startNewGame = (e) => {
   if(!FX.initialized) FX.start();// start soundFX
   setTimeout(startSong, 610)
   menu.style.display = "none";
@@ -703,7 +703,7 @@ function startNewGame(e){
     [10, 8, 12, 10, 16]
   ]
   startGame();
-}
+};
 
 function startGame(){
   console.log("[Event] Start stage "+level);
@@ -1305,7 +1305,8 @@ function pause(){
     requestAnimationFrame(draw);
   }
 }
-function mute(){
+
+window.mute = () => {
   if(FX.volume){
     FX.volume=0
     zzfxX.suspend()
@@ -1315,7 +1316,8 @@ function mute(){
     zzfxX.resume()
   }
   drawUserInterface();
-}
+};
+
 function resetGame(){
   if(end && level == 13 && win){
     master = mode+1;
@@ -1331,23 +1333,23 @@ function resetGame(){
   createMenu();
 }
 
-function prevStage(){
+window.prevStage = () => {
   console.log("[Cheat] force previous stage")
   if(level>1 && monet){
     jump = 5*jumpfps + 1;
     dir = 0;
     posX = 0;
   }
-}
+};
 
-function nextStage(){
+window.nextStage = () => {
   console.log("[Cheat] force next stage")
   if(level<13 && monet){
     jump = 5*jumpfps + 1;
     dir = 1;
     posX = L+1;
   }
-}
+};
 
 function keyDownHandler(e) {//console.log(e.keyCode)
   e = e.keyCode
@@ -1396,7 +1398,7 @@ function drawFPS(){
 
 // fullscreen handler
 // -----------------
-function toggleFullscreen(e){
+window.toggleFullscreen = (e) => {
   if (document.fullscreenEnabled) {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -1404,7 +1406,8 @@ function toggleFullscreen(e){
       document.exitFullscreen();
     }
   }
-}
+};
+
 function fullscreenCheck(e){
   console.log(e);
   fff = document.fullscreenElement;
