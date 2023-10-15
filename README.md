@@ -17,7 +17,7 @@ enhanced by the incredible sound engine [ZzFXM](https://github.com/keithclark/Zz
 
 ### Installing Dependencies
 
-After cloning this repo, install dependecies:
+After cloning this repo, install dependencies:
 
 ```
 pnpm i
@@ -29,19 +29,19 @@ To test your work in your browser (with hot reloading!) while developing:
 
 ```
 pnpm dev-mini
-# Alternatively to test in a more advanced WebXDC emulator:
+# Alternatively to test in a more advanced Webxdc emulator:
 pnpm dev
 ```
 
 ### Building
 
-To package the WebXDC file:
+To package the Webxdc file:
 
 ```
 pnpm build
 ```
 
-To package the WebXDC with developer tools inside to debug in Delta Chat, set the `NODE_ENV`
+To package the Webxdc with developer tools inside to debug in Delta Chat, set the `NODE_ENV`
 environment variable to "debug":
 
 ```
