@@ -560,7 +560,7 @@ function createMenu(){
         drawTitleTxt();
       } else if(m>85){
         txtCtx.globalAlpha = .05;
-        txtCtx.fillText("GET READY", 124, 125);
+        txtCtx.fillText("PLAY", 124, 125);
         txtCtx.globalAlpha = 1;
       }
       requestAnimationFrame(animateMenu);
