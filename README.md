@@ -5,7 +5,7 @@ Journey through dark forests and snowy meadows,
 pass through a great waterfall to finally reach the steppes and confront the Lion King!
 Clear the game to unlock Super Bunny and then hop with him at increased difficulty!
 
-![Logo](./icon.png)
+![Logo](./public/icon.png)
 
 ## Credits
 
