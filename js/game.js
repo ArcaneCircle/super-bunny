@@ -1,5 +1,14 @@
 import SongWorker from "./worker.js?worker";
 
+const game = document.getElementById("game");
+const gridCanvas = document.getElementById("gridCanvas");
+const bunnyCanvas = document.getElementById("bunnyCanvas");
+const leftbtn = document.getElementById("leftBtn");
+const rightbtn = document.getElementById("rightBtn");
+const menu = document.getElementById("menu");
+document.getElementById("fullscreenBtn").onclick = toggleFullscreen;
+document.getElementById("soundsBtn").onclick = mute;
+
 let songNode = null;
 let songStarted = false;
 const worker = new SongWorker();
@@ -1306,7 +1315,7 @@ function pause(){
   }
 }
 
-window.mute = () => {
+function mute() {
   if(FX.volume){
     FX.volume=0
     zzfxX.suspend()
@@ -1332,24 +1341,6 @@ function resetGame(){
   level = 0;
   createMenu();
 }
-
-window.prevStage = () => {
-  console.log("[Cheat] force previous stage")
-  if(level>1 && monet){
-    jump = 5*jumpfps + 1;
-    dir = 0;
-    posX = 0;
-  }
-};
-
-window.nextStage = () => {
-  console.log("[Cheat] force next stage")
-  if(level<13 && monet){
-    jump = 5*jumpfps + 1;
-    dir = 1;
-    posX = L+1;
-  }
-};
 
 function keyDownHandler(e) {//console.log(e.keyCode)
   e = e.keyCode
@@ -1398,7 +1389,7 @@ function drawFPS(){
 
 // fullscreen handler
 // -----------------
-window.toggleFullscreen = (e) => {
+function toggleFullscreen(e) {
   if (document.fullscreenEnabled) {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -1414,3 +1405,22 @@ function fullscreenCheck(e){
   drawUserInterface();
 }
 
+// for debugging
+window.prevStage = () => {
+  console.log("[Cheat] force previous stage")
+  if(level>1 && monet){
+    jump = 5*jumpfps + 1;
+    dir = 0;
+    posX = 0;
+  }
+};
+
+// for debugging
+window.nextStage = () => {
+  console.log("[Cheat] force next stage")
+  if(level<13 && monet){
+    jump = 5*jumpfps + 1;
+    dir = 1;
+    posX = L+1;
+  }
+};
