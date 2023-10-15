@@ -1,4 +1,22 @@
-"use strict";
+import SongWorker from "./worker.js?worker";
+
+let songNode = null;
+let songLoaded = false;
+let songStarted = false;
+const worker = new SongWorker();
+worker.onmessage = ({ data }) => {
+    songNode = zzfxP(data.right, data.left); // prepare song for playing, but do not start
+    songNode.loop = true;
+    songLoaded = true;
+    worker.terminate();
+};
+
+function startSong() {
+  if (songLoaded && !songStarted) {
+    songNode.start();
+    songStarted = true;
+  }
+}
 
 function addLeadingZeros(num, size) {
   const s = "000000000" + num;
@@ -102,24 +120,6 @@ var FX = (function(){
 
   return d;
 })();
-
-var songNode = null;
-var songLoaded = false;
-var songStarted = false;
-function loadSong() {
-  if (!songLoaded) {
-    songLoaded = true;
-    const songBuffer = zzfxM(...songData); // Generate the sample data
-    songNode = zzfxP(...songBuffer); // prepare song for playing, but do not start
-    songNode.loop = true;
-  }
-};
-function startSong() {
-  if (!songStarted) {
-    songNode.start()
-    songStarted = true;
-  }
-}
 
 var Tile = (function(){
   return {
@@ -558,10 +558,9 @@ function createMenu(){
         hero.lastChild.previousSibling.style.visibility = "visible";
         txtCtx.clearRect(0, 0, txt.width, txt.height);
         drawTitleTxt();
-        loadSong();
       } else if(m>85){
         txtCtx.globalAlpha = .05;
-        txtCtx.fillText(songLoaded? "GET READY":"LOADING...", 124, 125);
+        txtCtx.fillText("GET READY", 124, 125);
         txtCtx.globalAlpha = 1;
       }
       requestAnimationFrame(animateMenu);
@@ -615,10 +614,9 @@ function drawTitle(titleArr, baseLeft, baseTop, scale, className){
 }
 
 
-function startNewGame(e){
-  if(!songLoaded) return;
+window.startNewGame = (e) => {
   if(!FX.initialized) FX.start();// start soundFX
-  setTimeout(startSong, 610)
+  startSong();
   menu.style.display = "none";
   if(e==1) mode = 1;
   else if(e) mode = 0;
@@ -703,7 +701,7 @@ function startNewGame(e){
     [10, 8, 12, 10, 16]
   ]
   startGame();
-}
+};
 
 function startGame(){
   console.log("[Event] Start stage "+level);
@@ -1267,6 +1265,7 @@ function gameClick(e){
   else if(end && level == 13) resetGame()
 }
 function leftClick(){
+  startSong();
   if(jump || yum>1 || boom>1 || p || end || !running) return;
   if(dir) {
     FX.c(2,9);
@@ -1282,6 +1281,7 @@ function leftClick(){
   }
 }
 function rightClick(){
+  startSong();
   if(jump || yum>1 || boom>1 || p || (level==13&&posX==5) || end || !running) return;
   if(!dir) {
     FX.c(2,9);
