@@ -7,5 +7,5 @@ import {
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [buildXDC(), eruda(), mockWebxdc()],
+  plugins: [buildXDC({outFileName: "super-bunny.xdc"}), eruda(), mockWebxdc()],
 });
