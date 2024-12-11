@@ -23,14 +23,18 @@ After cloning this repo, install dependencies:
 pnpm i
 ```
 
+### Check code
+
+```
+pnpm check
+```
+
 ### Testing the app in the browser
 
 To test your work in your browser (with hot reloading!) while developing:
 
 ```
-pnpm dev-mini
-# Alternatively to test in a more advanced Webxdc emulator:
-pnpm dev
+pnpm start
 ```
 
 ### Building
