@@ -1,50 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+  <head>
+    <meta content="charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0"
+    />
 
-<head>
-	<meta content="charset=utf-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=0" />
-
-	<style>
-		div,canvas{position:absolute;box-sizing:border-box;cursor:pointer;}
-		.m{transform:scaleY(-1); opacity:.2}
-		.v{animation:move 1s;-webkit-animation:move 1s}
-		@keyframes move{from{opacity:0}}
-		@-webkit-keyframes move{from{opacity:0}}
-		#hero{top:352px;text-align:center;font:bold 14px arial;width:960px;}
-		.z{width:960px;height:540px;background-image:linear-gradient(#535,#323,#211,#312,#933,#111,#233,#346,#a57)}
-		.c{
-			image-rendering:-webkit-crisp-edges;
-			image-rendering:-moz-crisp-edges;
-			image-rendering:-o-crisp-edges;
-			image-rendering:pixelated;
-		}
-		.d{filter:drop-shadow(0 4px 0 #000);}
-		.e{width:100px;height:100px}
-		.f{width:80px;height:34px;left:875px;top:8px}
-		.s{background-color:#306bff;border:solid 6px;border-color:#59f #048 #036 #f6b}
-		.t{background-color:#d24;border:solid 5px;border-color:#d69 #a12 #702 #e8a}
-		.u{user-select:none;-moz-user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
-		.g{-webkit-filter:grayscale(.9);filter:grayscale(.9);opacity:.3;}
-	</style>
+    <style>
+      div,
+      canvas {
+        position: absolute;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      .m {
+        transform: scaleY(-1);
+        opacity: 0.2;
+      }
+      .v {
+        animation: move 1s;
+        -webkit-animation: move 1s;
+      }
+      @keyframes move {
+        from {
+          opacity: 0;
+        }
+      }
+      @-webkit-keyframes move {
+        from {
+          opacity: 0;
+        }
+      }
+      #hero {
+        top: 352px;
+        text-align: center;
+        font: bold 14px arial;
+        width: 960px;
+      }
+      .z {
+        width: 960px;
+        height: 540px;
+        background-image: linear-gradient(
+          #535,
+          #323,
+          #211,
+          #312,
+          #933,
+          #111,
+          #233,
+          #346,
+          #a57
+        );
+      }
+      .c {
+        image-rendering: -webkit-crisp-edges;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: pixelated;
+      }
+      .d {
+        filter: drop-shadow(0 4px 0 #000);
+      }
+      .e {
+        width: 100px;
+        height: 100px;
+      }
+      .f {
+        width: 80px;
+        height: 34px;
+        left: 875px;
+        top: 8px;
+      }
+      .s {
+        background-color: #306bff;
+        border: solid 6px;
+        border-color: #59f #048 #036 #f6b;
+      }
+      .t {
+        background-color: #d24;
+        border: solid 5px;
+        border-color: #d69 #a12 #702 #e8a;
+      }
+      .u {
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .g {
+        -webkit-filter: grayscale(0.9);
+        filter: grayscale(0.9);
+        opacity: 0.3;
+      }
+    </style>
     <script src="webxdc.js"></script>
-</head>
+  </head>
 
-<body class=u style=margin:0;overflow:hidden;background-color:#000>
-	<div id=game class=z>
-		<canvas class=c id=gridCanvas width=960 height=540></canvas>
-		<canvas class="c e" id=bunnyCanvas width=24 height=25></canvas>
-		<div id="fullscreenBtn" class=f style=top:50px;left:875px></div>
-		<div id="soundsBtn" class=f style=left:835px;width:120px;></div>
+  <body class="u" style="margin: 0; overflow: hidden; background-color: #000">
+    <div id="game" class="z">
+      <canvas class="c" id="gridCanvas" width="960" height="540"></canvas>
+      <canvas class="c e" id="bunnyCanvas" width="24" height="25"></canvas>
+      <div id="fullscreenBtn" class="f" style="top: 50px; left: 875px"></div>
+      <div id="soundsBtn" class="f" style="left: 835px; width: 120px"></div>
 
-		<div id=leftBtn style=left:0;top:30%;width:40%;height:70%></div>
-		<div id=rightBtn style=left:60%;top:30%;width:40%;height:70%></div>
-	</div>
-	<div id=menu class=z></div>
+      <div
+        id="leftBtn"
+        style="left: 0; top: 30%; width: 40%; height: 70%"
+      ></div>
+      <div
+        id="rightBtn"
+        style="left: 60%; top: 30%; width: 40%; height: 70%"
+      ></div>
+    </div>
+    <div id="menu" class="z"></div>
 
-	<script src="zzfx.js"></script>
-	<script src="./js/game.js" type="module"></script>
-</body>
-
+    <script src="zzfx.js"></script>
+    <script src="./js/game.js" type="module"></script>
+  </body>
 </html>
